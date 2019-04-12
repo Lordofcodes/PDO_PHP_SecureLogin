@@ -8,12 +8,16 @@ class DB
 {
 
     private static $instance = NULL;
+    private $pdo;
+
+
 
     private function __construct()
     {
 
         try {
-            self:$instance = new PDO("mysql:host = localhost;dbname = login", 'root', '');
+            $this->pdo = new PDO('mysql:host=localhost;dbname=slogin', 'root', '');
+           
         } catch (PDOException $e) {
             echo "Connection Failed" . $e->getMessage();
         }
@@ -24,15 +28,12 @@ class DB
         if (!isset(self::$instance)) {
                         self::$instance = new DB();
         }
-        return self::$instance;
-        
+        return self::$instance;      
     }
-}
+  public function getDB(){
+      if($this->pdo instanceof PDO){
+          return $this->pdo;
+      }
+  }
 
-$conn = DB::getInstance();
-
-$stmt = $conn->prepare("SELECT * FROM user");
-
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    var_dump($row);
 }
