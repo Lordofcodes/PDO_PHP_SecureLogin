@@ -1,6 +1,7 @@
-<h2>Welcome as an user</h2>
+
 <?php
 session_start();
+echo "<h1> Welcome ".$_GET['username']."</h1>";
 
  if(isset($_SESSION['role']) && $_SESSION['role'] == 'user')
  {

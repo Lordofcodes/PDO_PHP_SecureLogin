@@ -17,17 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $conn->prepare('SELECT * FROM users WHERE email = :email');
     $stmt->bindParam(':email', $_POST ['email']);
     $stmt->execute();
-    
+
     if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
         if ($email == $row['email'] && $password == $row['password'] && $row['role']=='admin') {
 
             $_SESSION['role'] = $row['role'];
-            header("Location: admin.php");
+            header("Location: admin.php?username".$row['username']);
         }
         else ($email == $row['email'] && $password == $row['password'] && $row['role'] == 'user'){
             $_SESSION['role'] = $row['role'];
-            header ("Location: user.php");
+            header ("Location: user.php?username=".$row['username']);
             } 
     }
     else {
