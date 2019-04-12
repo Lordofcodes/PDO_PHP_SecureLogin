@@ -1,0 +1,6 @@
+dbname : slogin ( secure_login)
+tableName: user
+
+col  id---email--password---role    
+row  1---admin@nitti.com---admin---admin
+row  2---user@nitti.com---user---user
