@@ -1,6 +1,6 @@
 <?php session_start();
 
-if(isset($_SESSION['role'])) {
+if (isset($_SESSION['role'])) {
   session_destroy();
 }
 
@@ -8,8 +8,7 @@ if(isset($_SESSION['role'])) {
 
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   <style>
     body {
       display: flex;
@@ -51,32 +50,26 @@ if(isset($_SESSION['role'])) {
   <div class="section"></div>
   <main>
     <center>
-      <div><?php if(isset($_GET['error'])) {
-  echo '<p class="error">'.$_GET['error'].'</p>';
-}
+      <div><?php if (isset($_GET['error'])) {
+              echo '<p class="error">' . $_GET['error'] . '</p>';
+            }
 
-?></div>
+            ?></div>
       <div class="container">
         <h5 class="indigo-text">Login</h5>
-        <div class="z-depth-1 grey lighten-4 row"
-          style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
           <form class="col s12" method="POST" action="authorize.php">
             <div class='row'>
               <div class='col s12'></div>
             </div>
             <div class='row'>
-              <div class='input-field col s12'><input class='validate' type='email' name='email'
-                  value="<?php echo isset($_GET["email"]) ? $_GET["email"] : ''; ?>" id='email' /><label
-                  for='email'>Enter your email</label></div>
+              <div class='input-field col s12'><input class='validate' type='email' name='email' value="<?php echo isset($_GET["email"]) ? $_GET["email"] : ''; ?>" id='email' /><label for='email'>Enter your email</label></div>
             </div>
             <div class='row'>
-              <div class='input-field col s12'><input class='validate' type='password' name='password'
-                  id='password' /><label for='password'>Enter your password</label></div><label style='float: right;'><a
-                  class='pink-text' href='#!'><b>Forgot Password?</b></a></label>
+              <div class='input-field col s12'><input class='validate' type='password' name='password' id='password' /><label for='password'>Enter your password</label></div><label style='float: right;'><a class='pink-text' href='#!'><b>Forgot Password?</b></a></label>
             </div><br />
             <center>
-              <div class='row'><button type='submit' name='btn_login'
-                  class='col s12 btn btn-large waves-effect indigo'>Login</button></div>
+              <div class='row'><button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Login</button></div>
             </center>
           </form>
         </div>
