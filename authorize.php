@@ -18,14 +18,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':email', $_POST ['email']);
     $stmt->execute();
 
-    if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    if ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
-        if ($email == $row['email'] && $password == $row['password'] && $row['role']=='admin') {
+        if ($email == $row['email'] && $password == $row['password'] && $row['role']=='admin'){
 
             $_SESSION['role'] = $row['role'];
-            header("Location: admin.php?username".$row['username']);
+            header("Location: admin.php?username=".$row['username']);
         }
-        else ($email == $row['email'] && $password == $row['password'] && $row['role'] == 'user'){
+        else if($email == $row['email'] && $password == $row['password'] && $row['role'] == 'user'){
+
             $_SESSION['role'] = $row['role'];
             header ("Location: user.php?username=".$row['username']);
             } 
