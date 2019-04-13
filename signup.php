@@ -7,6 +7,23 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    if(!isset($username) || trim($username) == ''){
+        header("Location: signup.php?error=Username Required!");
+        exit();
+    }
+    if(!isset($email) || trim($email) == ''){
+        header("Location: signup.php?error=Email required!");
+        exit();
+    }
+    else if(!isset($password) || trim($password) == ''){
+        header("Location: signup.php?email=".$email."&error=Password required!");
+        exit();
+    }  
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header("Location: signup.php?error=Pleaes enter correct email!");
+        exit();
+    }
+
     $conn = DB::getInstance()->getDB();
     $stmt = $conn->prepare('SELECT * FROM users WHERE email = :mail');
     $stmt->execute(['mail'=>$_POST['email']]);
@@ -20,6 +37,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         'mail'=> $_POST['email'],
         'pwd'=> $_POST['password'],]);
         }
+        header("Location: home.php?success=Account created successfully!");
+
 }
 
 

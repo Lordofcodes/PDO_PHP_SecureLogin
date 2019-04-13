@@ -28,7 +28,10 @@ if (isset($_SESSION['role'])) {
       text-weight: bold;
       color: red;
     }
-
+    .success {
+      text-weight: bold;
+      color: green;
+    }
     .input-field input[type=date]:focus+label,
     .input-field input[type=text]:focus+label,
     .input-field input[type=email]:focus+label,
@@ -52,6 +55,9 @@ if (isset($_SESSION['role'])) {
     <center>
       <div><?php if (isset($_GET['error'])) {
               echo '<p class="error">' . $_GET['error'] . '</p>';
+      }
+              if (isset($_GET['success'])) {
+                echo '<p class="success">' . $_GET['success'] . '</p>';
             }
 
             ?></div>
