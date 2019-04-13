@@ -73,7 +73,7 @@ if (isset($_SESSION['role'])) {
             </center>
           </form>
         </div>
-      </div><a href="#!">Create account</a>
+      </div><a href="signup.php">Create account</a>
     </center>
     <div class="section"></div>
     <div class="section"></div>
